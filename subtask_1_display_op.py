@@ -14,12 +14,10 @@ class DisplayOp(Node):
 
     def number1_callback(self, msg: Int32):
         self.num1 = msg.data
-        # self.get_logger().info(f"Received number1: {self.num1}")
         self.calculate_and_display_sum()
 
     def number2_callback(self, msg: Int32):
         self.num2 = msg.data
-        # self.get_logger().info(f"Received number2: {self.num2}")
         self.calculate_and_display_sum()
 
     def calculate_and_display_sum(self):
@@ -28,8 +26,7 @@ class DisplayOp(Node):
             self.get_logger().info(f"Sum of numbers: {total_sum}")
             self.num1 = None
             self.num2 = None
-        # else:
-        #     # self.get_logger().info("Waiting for both numbers to calculate the sum...")
+        
 
 def main(args=None):
     rclpy.init(args=args)
