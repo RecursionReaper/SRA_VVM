@@ -1,0 +1,20 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/yash/EKLAVYA_VVM/Ros2_ws/build/add_2num",
+        "/home/yash/EKLAVYA_VVM/Ros2_ws/install/add_2num/lib/python3.10/site-packages",
+        "/home/yash/ros2_ws/build/task3",
+        "/home/yash/ros2_ws/install/task3/lib/python3.10/site-packages",
+        "/home/yash/ros2_ws/src/install/task3/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/yash/EKLAVYA_VVM/Ros2_ws/build/add_2num",
+        "/home/yash/EKLAVYA_VVM/Ros2_ws/install/add_2num/lib/python3.10/site-packages",
+        "/home/yash/ros2_ws/build/task3",
+        "/home/yash/ros2_ws/install/task3/lib/python3.10/site-packages",
+        "/home/yash/ros2_ws/src/install/task3/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

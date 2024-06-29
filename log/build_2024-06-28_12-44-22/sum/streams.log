@@ -1,0 +1,25 @@
+[0.527s] Invoking command in '/home/yash/EKLAVYA_VVM/Ros2_ws/src/sum': PYTHONPATH=/home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/prefix_override:/home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/sum build --build-base /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build install --record /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/install.log --single-version-externally-managed install_data
+[0.715s] running egg_info
+[0.715s] writing ../../build/sum/sum.egg-info/PKG-INFO
+[0.716s] writing dependency_links to ../../build/sum/sum.egg-info/dependency_links.txt
+[0.716s] writing entry points to ../../build/sum/sum.egg-info/entry_points.txt
+[0.716s] writing requirements to ../../build/sum/sum.egg-info/requires.txt
+[0.716s] writing top-level names to ../../build/sum/sum.egg-info/top_level.txt
+[0.717s] reading manifest file '../../build/sum/sum.egg-info/SOURCES.txt'
+[0.718s] writing manifest file '../../build/sum/sum.egg-info/SOURCES.txt'
+[0.718s] running build
+[0.718s] running build_py
+[0.718s] copying sum/sub.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum
+[0.718s] running install
+[0.719s] running install_lib
+[0.719s] copying /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum/sub.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum
+[0.720s] byte-compiling /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum/sub.py to sub.cpython-310.pyc
+[0.720s] running install_data
+[0.721s] running install_egg_info
+[0.722s] removing '/home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum-0.0.0-py3.10.egg-info' (and everything under it)
+[0.722s] Copying ../../build/sum/sum.egg-info to /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum-0.0.0-py3.10.egg-info
+[0.723s] running install_scripts
+[0.741s] Installing pub script to /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/sum
+[0.741s] Installing sub script to /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/sum
+[0.742s] writing list of installed files to '/home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/install.log'
+[0.778s] Invoked command in '/home/yash/EKLAVYA_VVM/Ros2_ws/src/sum' returned '0': PYTHONPATH=/home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/prefix_override:/home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/sum build --build-base /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build install --record /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/install.log --single-version-externally-managed install_data

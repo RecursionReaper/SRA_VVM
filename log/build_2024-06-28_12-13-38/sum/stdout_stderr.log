@@ -1,0 +1,39 @@
+running egg_info
+creating ../../build/sum/sum.egg-info
+writing ../../build/sum/sum.egg-info/PKG-INFO
+writing dependency_links to ../../build/sum/sum.egg-info/dependency_links.txt
+writing entry points to ../../build/sum/sum.egg-info/entry_points.txt
+writing requirements to ../../build/sum/sum.egg-info/requires.txt
+writing top-level names to ../../build/sum/sum.egg-info/top_level.txt
+writing manifest file '../../build/sum/sum.egg-info/SOURCES.txt'
+reading manifest file '../../build/sum/sum.egg-info/SOURCES.txt'
+writing manifest file '../../build/sum/sum.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build
+creating /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib
+creating /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum
+copying sum/__init__.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum
+copying sum/sub.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum
+copying sum/pub.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum
+running install
+running install_lib
+creating /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum
+copying /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum/__init__.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum
+copying /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum/sub.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum
+copying /home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/build/lib/sum/pub.py -> /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum
+byte-compiling /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum/sub.py to sub.cpython-310.pyc
+byte-compiling /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum/pub.py to pub.cpython-310.pyc
+running install_data
+creating /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/share/ament_index
+creating /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/share/ament_index/resource_index
+creating /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/share/ament_index/resource_index/packages
+copying resource/sum -> /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/share/ament_index/resource_index/packages
+copying package.xml -> /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/share/sum
+running install_egg_info
+Copying ../../build/sum/sum.egg-info to /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/python3.10/site-packages/sum-0.0.0-py3.10.egg-info
+running install_scripts
+Installing pub script to /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/sum
+Installing sub script to /home/yash/EKLAVYA_VVM/Ros2_ws/install/sum/lib/sum
+writing list of installed files to '/home/yash/EKLAVYA_VVM/Ros2_ws/build/sum/install.log'
