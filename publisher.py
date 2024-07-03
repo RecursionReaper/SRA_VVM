@@ -19,7 +19,7 @@ class TalkerNode(Node):
 
     def publish_sum(self):
         msg = String()
-        msg.data = str(self.sum)  # Only the sum is published
+        msg.data = str(self.sum) 
         self.publisher_.publish(msg)
 
 def main(args=None):
