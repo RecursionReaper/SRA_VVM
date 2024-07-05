@@ -10,7 +10,7 @@ theta3 = degrees_to_radians(input("Enter theta 3 (in degrees): "))
 theta4 = degrees_to_radians(input("Enter theta 4 (in degrees): "))
 
 if 0<=theta1<=180 and -90<=theta2<=90 and -90<=theta3<=90 and -90<=theta4<=90 :
-
+    #Defining Transformation Matrices
     H1 = np.array([[math.cos(theta1),-math.sin(theta1),0,0], 
                 [math.sin(theta1),math.cos(theta1),0,0],
                 [0,0,1,0],
@@ -35,7 +35,7 @@ if 0<=theta1<=180 and -90<=theta2<=90 and -90<=theta3<=90 and -90<=theta4<=90 :
                 [0],
                 [0],
                 [1]])
-
+    #Transformation Matrices Multiplication
     H12 = np.dot(H1,H2)
     H123 = np.dot(H12,H3)
     H1234 = np.dot(H123,H4)
@@ -45,6 +45,7 @@ if 0<=theta1<=180 and -90<=theta2<=90 and -90<=theta3<=90 and -90<=theta4<=90 :
     print(" X Y Z =  : \n", H12345)
 else :
     print (" Enter theta 1 in 0 to 180 degree and theta 2,3,4 in -90 to 90 degree ")
+    # Set Home Position
     theta1=0
     theta2=0
     theta3=0
