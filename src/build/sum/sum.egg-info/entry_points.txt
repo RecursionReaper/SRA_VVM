@@ -1,4 +1,0 @@
-[console_scripts]
-pub = sum.pub:main
-sub = sum.sub:main
-
