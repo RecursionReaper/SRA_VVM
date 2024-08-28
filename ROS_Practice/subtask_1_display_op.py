@@ -23,7 +23,7 @@ class DisplayOp(Node):
     def calculate_and_display_sum(self):
         if self.num1 is not None and self.num2 is not None:
             total_sum = self.num1 + self.num2
-            self.get_logger().info(f"Sum of numbers: {total_sum}")
+            self.get_logger().info(f"Sum of nos: {total_sum}")
             self.num1 = None
             self.num2 = None
         
