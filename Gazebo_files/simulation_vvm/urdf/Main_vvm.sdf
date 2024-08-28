@@ -1,0 +1,393 @@
+<sdf version='1.7'>
+  <model name='VoiceVidManipulator'>
+    <link name='link1'>
+      <static>True</static>
+      <pose>0 0 0 0 0 0</pose> 
+      <inertial>
+        <pose>0.000309 0 -0.000122 0 -0 0</pose>
+        <mass>0.07912</mass>
+        <inertia>
+          <ixx>1.25052e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-1.78552e-07</ixz>
+          <iyy>2.18984e-05</iyy>
+          <iyz>0</iyz>
+          <izz>1.92674e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='link1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link1.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint1' type='revolute'>
+      <pose relative_to='link1'>0.012 0 0.017 0 -0 0</pose>
+      <parent>link1</parent>
+      <child>link2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2.82743</lower>
+          <upper>2.82743</upper>
+          <effort>1</effort>
+          <velocity>4.8</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link2'>
+      <pose relative_to='joint1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.000302 0.00054 0.047433 0 -0 0</pose>
+        <mass>0.0984068</mass>
+        <inertia>
+          <ixx>3.45434e-05</ixx>
+          <ixy>-1.60311e-08</ixy>
+          <ixz>-3.83752e-07</ixz>
+          <iyy>3.26893e-05</iyy>
+          <iyz>2.85119e-08</iyz>
+          <izz>1.88503e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='link2_collision'>
+        <pose>0 0 0.019 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link2_visual'>
+        <pose>0 0 0.019 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link2.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint2' type='revolute'>
+      <pose relative_to='link2'>0 0 0.0595 0 -0 0</pose>
+      <parent>link2</parent>
+      <child>link3</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.79071</lower>
+          <upper>1.5708</upper>
+          <effort>1</effort>
+          <velocity>4.8</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link3'>
+      <pose relative_to='joint2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.010308 0.000377 0.101702 0 -0 0</pose>
+        <mass>0.138509</mass>
+        <inertia>
+          <ixx>0.000330554</ixx>
+          <ixy>-9.7941e-08</ixy>
+          <ixz>-3.85057e-05</ixz>
+          <iyy>0.000342904</iyy>
+          <iyz>-1.57175e-06</iyz>
+          <izz>6.03465e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='link3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link3.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link3.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint3' type='revolute'>
+      <pose relative_to='link3'>0.024 0 0.128 0 -0 0</pose>
+      <parent>link3</parent>
+      <child>link4</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.942478</lower>
+          <upper>1.3823</upper>
+          <effort>1</effort>
+          <velocity>4.8</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link4'>
+      <pose relative_to='joint3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.09091 0.000389 0.000224 0 -0 0</pose>
+        <mass>0.132746</mass>
+        <inertia>
+          <ixx>3.06542e-05</ixx>
+          <ixy>-1.27642e-06</ixy>
+          <ixz>-2.68744e-07</ixz>
+          <iyy>0.000242303</iyy>
+          <iyz>1.15595e-08</iyz>
+          <izz>0.000251551</izz>
+        </inertia>
+      </inertial>
+      <collision name='link4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link4.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link4_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link4.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint4' type='revolute'>
+      <pose relative_to='link4'>0.124 0 0 0 -0 0</pose>
+      <parent>link4</parent>
+      <child>link5</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.79071</lower>
+          <upper>2.04204</upper>
+          <effort>1</effort>
+          <velocity>4.8</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link5'>
+      <pose relative_to='joint4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.044774 0 0.008852 0 -0 0</pose>
+        <mass>0.144276</mass>
+        <inertia>
+          <ixx>0.00108095</ixx>
+          <ixy>2.99238e-11</ixy>
+          <ixz>-2.9172e-07</ixz>
+          <iyy>0.0010827</iyy>
+          <iyz>-3.26124e-12</iyz>
+          <izz>0.00109977</izz>
+        </inertia>
+      </inertial>
+      <collision name='link5_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link5.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link5_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link5.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='link5_fixed_joint_lump__end_effector_link_visual_1'>
+        <pose>0.126 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='gripper' type='prismatic'>
+      <pose relative_to='link5'>0.0817 0.021 0 0 -0 0</pose>
+      <parent>link5</parent>
+      <child>gripper_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.01</lower>
+          <upper>0.019</upper>
+          <effort>1</effort>
+          <velocity>4.8</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_link'>
+      <pose relative_to='gripper'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link_grip_l.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='gripper_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link_grip_l.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='gripper_sub' type='prismatic'>
+      <pose relative_to='link5'>0.0817 -0.021 0 0 -0 0</pose>
+      <parent>link5</parent>
+      <child>gripper_link_sub</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-0.01</lower>
+          <upper>0.019</upper>
+          <effort>1</effort>
+          <velocity>4.8</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_link_sub'>
+      <pose relative_to='gripper_sub'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_link_sub_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link_grip_r.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='gripper_link_sub_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/chain_link_grip_r.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="camera_joint" type="fixed">
+      <pose>0.070 0.032 0.052 0 0 0</pose> 
+      <axis>
+        <xyz>0 1 0</xyz> 
+      </axis>
+      <parent>link5</parent> 
+      <child>camera_link</child>
+    </joint>
+    <link name='camera_link'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='camera_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/IntelRealsense_D435_Multibody.SLDPRT</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='camera_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://simulation_vvm/meshes/IntelRealsense_D435_Multibody.SLDPRT</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
