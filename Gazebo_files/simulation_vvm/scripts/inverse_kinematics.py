@@ -7,7 +7,24 @@ from rclpy import qos
 import math
 import sys
 
+EEX = 0
+EEY = 0
+EEZ = 0
+GRIPPER = 0
+
+def Input_function(msg):
+    global EEX, EEY, EEZ, GRIPPER
+    msg.info[0] = EEX
+    msg.info[1] = EEY
+    msg.info[2] = EEZ
+    msg.info[3] = GRIPPER
+
+    if EEX == 0.0:
+        EEX = 0.001
+
 def inverse_kinematics_publisher():
+    global EEX, EEY, EEZ, GRIPPER
+    Pos_subscription = node.create_subscription(Float64MultiArray,'inverse_kinematics/inputs',Input_function,10)
     Joints = node.create_publisher(Float64MultiArray, '/forward_position_controller/commands',qos_profile=qos.qos_profile_parameter_events)
     joint = Float64MultiArray()
     joint.data = [0.0,0.0,0.0,0.0,0.0,0.0]
@@ -19,10 +36,11 @@ def inverse_kinematics_publisher():
     L3 = 0.124
     L4 = 0.126
 
+    # EEX = 0.274
+    # EEY = 0
+    # EEZ = 0.205
 
     EEX = float(input("ENTER X COORDINATE - "))
-    if EEX == 0.0:
-        EEX = 0.001
     EEY = float(input("ENTER Y COORDINATE - "))
     EEZ = float(input("ENTER Z COORDINATE - "))
     GRIPPER = bool(input("ENTER 1/0 for gripper OPEN / CLOSE - "))

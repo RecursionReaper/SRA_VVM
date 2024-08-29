@@ -12,12 +12,12 @@ class PositionCommandSubscriber(Node):
     def __init__(self):
         super().__init__('position_command_subscriber')
         self.subscription = self.create_subscription(Float64MultiArray,'forward_position_controller/commands',self.listener_callback,10)
-        self.subscription  
-
+        self.subscription = self.create_subscription(Float64MultiArray,'/obj_position',self.listener_callback,10)
+        
         self.publisher_ = self.create_publisher(Float64MultiArray, 'inverse_kinematics/inputs', 10)
 
     def listener_callback(self, msg):
-        if len(msg.data) == 6:
+        if len(msg.data) == 4:
             joint_positions = {
                 "Joint 1": msg.data[0],
                 "Joint 2": msg.data[1],
@@ -66,12 +66,17 @@ class PositionCommandSubscriber(Node):
                         [0,0,0,1]])
             
 
-            ObjDistance_X = 0.06  # <-------------  OBJECT DISTANCE FROM ML comes here
+            ObjDistance_X = msg.Data[0]  
+            ObjDistance_Y = msg.Data[1] 
+            ObjDistance_Z = msg.Data[2]
+            ObjDistance_dist = msg.Data[3]  
+
+            
 
             HCam = np.array([[0,0,0,ObjDistance_X],
-                        [0,0,0,0],
-                        [0,0,0,0],
-                        [0,0,0,1]])
+                             [0,0,0,ObjDistance_Y],
+                             [0,0,0,ObjDistance_Z],
+                             [0,0,0,1]])
 
             H12 = np.dot(H1,H2)
             H12T=np.dot(H12,H2T)
@@ -94,7 +99,7 @@ class PositionCommandSubscriber(Node):
             print("Gripper - ",GRIPPER)
 
             msg_to_publish = Float64MultiArray()
-            msg_to_publish.data = [EEX,EEY,EEZ,GRIPPER]
+            msg_to_publish.info = [EEX,EEY,EEZ,GRIPPER]
             self.publisher_.publish(msg_to_publish)
 
         

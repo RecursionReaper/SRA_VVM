@@ -1,0 +1,14 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/yash/ros2_ws/install/task3/lib/python3.10/site-packages",
+        "/home/yash/ros2_ws/src/install/task3/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/yash/ros2_ws/install/task3/lib/python3.10/site-packages",
+        "/home/yash/ros2_ws/src/install/task3/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

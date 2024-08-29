@@ -1,0 +1,5 @@
+trajectory:
+  - time_from_start: {sec: 0, nanosec: 0}
+    positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  - time_from_start: {sec: 10, nanosec: 0}
+    positions: [1.0, 1.0, 1.0, 1.0, 0.5, 0.5]

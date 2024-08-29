@@ -17,7 +17,7 @@ def generate_launch_description():
     #     )
     # )
 
-    world = "vvm_world_1.world"
+    world = "vvm_world_5.world"
     world_file = os.path.join(pkg_vvm_bot, "worlds", world)
 
     gazebo = IncludeLaunchDescription(

@@ -26,6 +26,7 @@ find_package(robot_state_publisher REQUIRED)
 # find_package(<dependency> REQUIRED)
 install(PROGRAMS
   scripts/inverse_kinematics.py
+  scripts/slow_control.py
   scripts/direct_angle.py
   scripts/Object_distance.py
   DESTINATION lib/${PROJECT_NAME}
