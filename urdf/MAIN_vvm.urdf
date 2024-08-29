@@ -104,12 +104,12 @@
         <mesh filename="package://simulation_vvm/meshes/chain_link5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
-    <visual name="link5_fixed_joint_lump__end_effector_link_visual_1">
-      <origin xyz="0.126 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="0.01 0.01 0.01"/>
-      </geometry>
-    </visual>
+    <!-- <visual name="link5_fixed_joint_lump__end_effector_link_visual_1"> -->
+      <!-- <origin xyz="0.126 0 0" rpy="0 0 0"/> -->
+      <!-- <geometry> -->
+        <!-- <box size="0.01 0.01 0.01"/> -->
+      <!-- </geometry> -->
+    <!-- </visual> -->
   </link>
 
   <link name="gripper_link">
@@ -154,7 +154,7 @@
 
   <link name="camera_link">
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 1.5708"/>
       <mass value="0.001"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -171,7 +171,13 @@
       </geometry>
     </visual>
   </link>
-  <link name="camera_frame_link"></link>
+  <link name="camera_frame_link">
+    <!-- <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial> -->
+  </link>
 
   <!-- Joint definitions -->
   <joint name="joint1" type="revolute">
@@ -236,7 +242,7 @@
   </joint>
 
   <joint name="camera_to_camera_frame_joint" type="fixed">
-    <origin xyz="0 0 0.5" rpy="0 0 0"/> 
+    <origin xyz="0.045 0.012 0" rpy="0 1.5708 0"/> 
     <parent link="camera_link"/>
     <child link="camera_frame_link"/>
   </joint>
@@ -274,7 +280,7 @@
     <joint name="joint4">
       <command_interface name="position"/>
       <state_interface name="position">
-        <param name="initial_value">0.7</param>
+        <param name="initial_value">0.0</param>
       </state_interface>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -282,7 +288,7 @@
     <joint name="gripper">
       <command_interface name="position"/>
       <state_interface name="position">
-        <param name="initial_value">0.12</param>
+        <param name="initial_value">0.0</param>
       </state_interface>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -290,15 +296,15 @@
     <joint name="gripper_sub">
       <command_interface name="position"/>
       <state_interface name="position">
-        <param name="initial_value">0.12</param>
+        <param name="initial_value">0.0</param>
       </state_interface>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
   </ros2_control>
 
-  <gazebo reference= 'camera_link'>
-    <sensor name="camera" type="depth">
+  <gazebo reference= 'camera_frame_link'>
+    <sensor name="camera" type="camera">
       <pose> 0 0 0 0 0 0 </pose>
       <visualize>true</visualize>
       <update_rate>10</update_rate>
@@ -315,10 +321,49 @@
           </clip>
       </camera>
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-          <frame_name>camera_frame_link</frame_name>
+        <frame_name>camera_frame_link</frame_name>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <!-- <hackBaseline>0.07</hackBaseline> -->
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
       </plugin>
     </sensor>
   </gazebo>
+
+    <!-- librealsense_gazebo_plugin.so -->
+  <!-- <gazebo>
+    <plugin name="camera_controller" filename="libDepthCameraPlugin.so">
+      <prefix>Intel_Depth_Camera</prefix>
+      <depthUpdateRate>30.0</depthUpdateRate>
+      <colorUpdateRate>30.0</colorUpdateRate>
+      <infraredUpdateRate>30.0</infraredUpdateRate>
+      <depthTopicName>depth/image_raw</depthTopicName>
+      <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
+      <colorTopicName>color/image_raw</colorTopicName>
+      <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
+      <infrared1TopicName>infra1/image_raw</infrared1TopicName>
+      <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
+      <infrared2TopicName>infra2/image_raw</infrared2TopicName>
+      <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
+      <colorOpticalframeName>${color_optical_frame}</colorOpticalframeName>
+      <depthOpticalframeName>${depth_optical_frame}</depthOpticalframeName>
+      <infrared1OpticalframeName>${infrared1_optical_frame}</infrared1OpticalframeName>
+      <infrared2OpticalframeName>${infrared2_optical_frame}</infrared2OpticalframeName>
+      <rangeMinDepth>0.2</rangeMinDepth>
+      <rangeMaxDepth>10.0</rangeMaxDepth>
+      <pointCloud>${publish_pointcloud}</pointCloud>
+      <pointCloudTopicName>depth/color/points</pointCloudTopicName>
+      <pointCloudCutoff>0.25</pointCloudCutoff>
+      <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
+    </plugin>
+  </gazebo> -->
   
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control"> 
