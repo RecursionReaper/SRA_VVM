@@ -1,8 +1,10 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
+from std_msgs.msg import Float64MultiArray
 from cv_bridge import CvBridge
 import cv2
+import sys
 
 
 class ImageSubscriber(Node):
@@ -15,7 +17,6 @@ class ImageSubscriber(Node):
             self.listener_callback,
             10)
         self.subscription 
-
         self.br = CvBridge()
 
     def listener_callback(self, msg):
@@ -36,6 +37,7 @@ def main(args=None):
 
     image_subscriber.destroy_node()
     rclpy.shutdown()
+    
 
 
 if __name__ == '__main__':

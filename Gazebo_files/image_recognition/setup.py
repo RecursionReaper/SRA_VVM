@@ -26,6 +26,7 @@ setup(
     entry_points={
         'console_scripts': [
             'image_subscriber = image_recognition.image_subscriber:main',
+            'direct_camera_input = image_recognition.direct_camera_input:main'
         ],
     },
 )

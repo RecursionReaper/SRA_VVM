@@ -10,7 +10,7 @@ from launch_ros.descriptions import ParameterValue
 
 def generate_launch_description():
     ####### DATA INPUT ##########
-    sdf_file = "Main_vvm_02.urdf"
+    sdf_file = "MAIN_vvm.urdf"
     package_description = "simulation_vvm"
     ####### DATA INPUT END ##########
     

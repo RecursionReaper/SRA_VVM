@@ -8,16 +8,16 @@ import math
 import sys
 
 def direct_angle_publisher():
-    Joints = node.create_publisher(Float64MultiArray, '/forward_position_controller/commands',qos_profile=qos.qos_profile_parameter_events)
+    Joints = node.create_publisher(Float64MultiArray, 'trajectory_input',qos_profile=qos.qos_profile_parameter_events)
     joint = Float64MultiArray()
-    joint.data = [0.0,0.0,0.0,0.0,0.0,0.0]
+    joint.data = [0.0,0.0,0.0,0.0]
 
     joint.data[0]=math.radians(float(input("ENTER JOINT 1 ANGLE- ")))
     joint.data[1]=math.radians(float(input("ENTER JOINT 2 ANGLE- ")))
     joint.data[2]=math.radians(float(input("ENTER JOINT 3 ANGLE- ")))
     joint.data[3]=math.radians(float(input("ENTER JOINT 4 ANGLE- ")))
-    joint.data[4]=float(input("Entey Gripper L -"))
-    joint.data[5]=float(input("Entey Gripper R -"))
+    # joint.data[4]=float(input("Entey Gripper L -"))
+    # joint.data[5]=float(input("Entey Gripper R -"))
 
     
     Joints.publish(joint)
