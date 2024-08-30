@@ -7,50 +7,6 @@
     <child link="link1"/>
   </joint>
 
-
-<!-- .............................................................   -->
-
-  <!-- <link name="horizontal_bar">
-    <visual>
-      <geometry>
-        <box size="0.15 0.02 0.05"/> 
-      </geometry>
-      <origin xyz="0 0.05 0"/> 
-      <material name="invisible">
-        <color rgba="0 0 0 0"/> 
-      </material>
-    </visual>
-  </link>
-
-
-  <link name="vertical_bar">
-    <visual>
-      <geometry>
-        <box size="0.05 0.05 0.10"/> 
-      </geometry>
-      <origin xyz="0 0 0"/> 
-      <material name="green">
-        <color rgba="0 1 0 1"/> 
-      </material>
-    </visual>
-  </link>
-
-
-  <joint name="fixed_joint" type="fixed">
-    <parent link="vertical_bar"/>
-    <child link="horizontal_bar"/>
-    <origin xyz="0 0.025 0.05"/> 
-  </joint>
-
-
-<joint name="world_to_t_shape" type="fixed">
-  <parent link="world"/>
-  <child link="vertical_bar"/>
-  <origin xyz="0.280 0 0"/>
-</joint> -->
-
-<!-- .............................................................   -->
-
   <link name="link1">
     <inertial>
       <origin xyz="0.000309 0 -0.000122" rpy="0 0 0"/>
@@ -224,6 +180,40 @@
     </inertial> -->
   </link>
 
+  <link name="horizontal_bar">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.15 0.02 0.05"/> 
+      </geometry>
+      <origin xyz="0 0.05 0"/> 
+      <material name="invisible">
+        <color rgba="0 0 0 0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <link name="vertical_bar">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.2"/>
+      <inertia ixx="0.0002" ixy="0" ixz="0" iyy="0.0002" iyz="0" izz="0.0002"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.10"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
   <!-- Joint definitions -->
   <joint name="joint1" type="revolute">
     <parent link="link1"/>
@@ -292,6 +282,19 @@
     <child link="camera_frame_link"/>
   </joint>
   
+  <!-- Joint between vertical and horizontal bar of T-shape -->
+  <joint name="fixed_joint" type="fixed">
+    <parent link="vertical_bar"/>
+    <child link="horizontal_bar"/>
+    <origin xyz="0 0.025 0.05"/> 
+  </joint>
+
+  <!-- Joint to place T shape at specified position -->
+  <joint name="t_shape_position" type="floating">
+    <parent link="world"/>
+    <child link="vertical_bar"/>
+    <origin xyz="0.280 0 0.078" rpy="0 0 0"/> 
+  </joint>
 
 
   <ros2_control name="GazeboSystem" type="system">
