@@ -32,7 +32,7 @@ class JointStatePublisher(Node):
 
         angle_msg = JointState()
         angle_msg.name = ['Theta1', 'Theta2', 'Theta3', 'Theta4']
-        angle_msg.position = [self.angles[0], self.angles[1], self.angles[2], self.angles[3]]
+        angle_msg.position = [self.angles[2], self.angles[0], self.angles[1], self.angles[3]]
         self.publisher.publish(angle_msg)
 
 def main(args=None):

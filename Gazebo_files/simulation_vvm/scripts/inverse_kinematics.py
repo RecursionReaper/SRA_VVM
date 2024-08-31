@@ -17,7 +17,7 @@ class InverseKinematicsNode(Node):
         super().__init__('inverse_kinematics_publisher')
 
         self.create_subscription(Float64MultiArray, 'inverse_kinematics/inputs', self.position_callback, 10)
-        self.joints_publisher = self.create_publisher(Float64MultiArray, 'trajectory_input', 10)
+        self.joints_publisher = self.create_publisher(Float64MultiArray, 'trajectory_inputs', 10)
         self.timer = self.create_timer(0.2, self.inverse_kinematics_publisher)
         
     def position_callback(self, msg):
@@ -110,9 +110,11 @@ class InverseKinematicsNode(Node):
         #     # joint.data[5] = 0.0
 
         self.joints_publisher.publish(joint)
-
+        
+    
 if __name__ == '__main__':
     rclpy.init(args=sys.argv)
     node = InverseKinematicsNode()
+
     rclpy.spin(node)
     rclpy.shutdown()
