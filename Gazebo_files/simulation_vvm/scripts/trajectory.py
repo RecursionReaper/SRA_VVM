@@ -7,66 +7,67 @@ from rclpy import qos
 import time
 import sys
 
-J1, J2, J3, J4 = 0.0, 0.0, 0.0, 0.0
-Jc1, Jc2, Jc3, Jc4 = 0.0, 0.0, 0.0, 0.0
+class TrajectoryPublisher(Node):
+    def __init__(self):
+        super().__init__('trajectory_publisher')
+        self.J1, self.J2, self.J3, self.J4 = 0.0, 0.0, 0.0, 0.0
+        self.Jc1, self.Jc2, self.Jc3, self.Jc4 = 0.0, 0.0, 0.0, 0.0
+        self.new_input = False
+        self.trajectory_in_progress = False
 
-Trajectory = 0
+        self.create_subscription(Float64MultiArray, 'trajectory_inputs', self.input_callback, 10)
+        self.create_subscription(Float64MultiArray, 'current_angle_topic', self.angle_callback, 10)
+        self.publisher = self.create_publisher(Float64MultiArray, '/forward_position_controller/commands', qos_profile=qos.qos_profile_parameter_events)
 
+        # Timer to check for new inputs and execute trajectory
+        self.create_timer(0.1, self.check_and_execute_trajectory)
 
-def Input_function(msg):
-    global J1, J2, J3, J4
-    J1 = msg.data[0]
-    J2 = msg.data[1]
-    J3 = msg.data[2]
-    J4 = msg.data[3]
+    def input_callback(self, msg):
+        new_J1, new_J2, new_J3, new_J4 = msg.data[:4]
+        if (new_J1 != self.J1 or new_J2 != self.J2 or 
+            new_J3 != self.J3 or new_J4 != self.J4):
+            self.J1, self.J2, self.J3, self.J4 = new_J1, new_J2, new_J3, new_J4
+            self.new_input = True
 
-def angle_callback(angle):
-    global Jc1, Jc2, Jc3, Jc4
-    Jc1 = angle.data[0]
-    Jc2 = angle.data[1]
-    Jc3 = angle.data[2]
-    Jc4 = angle.data[3]
+    def angle_callback(self, angle):
+        self.Jc1, self.Jc2, self.Jc3, self.Jc4 = angle.data[:4]
 
-def joint_trajectory_publisher():
-    global Jc1, Jc2, Jc3, Jc4, J1, J2, J3, J4
+    def check_and_execute_trajectory(self):
+        if self.new_input and not self.trajectory_in_progress:
+            self.execute_trajectory()
+            self.new_input = False
 
+    def execute_trajectory(self):
+        self.trajectory_in_progress = True
+        joint = Float64MultiArray()
+        joint.data = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
-    Pos_subscription = node.create_subscription(Float64MultiArray, 'trajectory_inputs', Input_function, 10)
-    angle_subscription = node.create_subscription(Float64MultiArray, 'current_angle_topic', angle_callback, 10)
-    Joints = node.create_publisher(Float64MultiArray, '/forward_position_controller/commands', qos_profile=qos.qos_profile_parameter_events)
-    
-    joint = Float64MultiArray()
-    joint.data = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        TIME = 4  # Total time
+        STEP_TIME = 0.05  # Time per step 50ms
+        STEPS = int(TIME / STEP_TIME)  # Number of steps
 
-    TIME = 5  # Total time 
-    STEP_TIME = 0.05  # Time per step 50ms
-    STEPS = int(TIME / STEP_TIME)  # Number of steps
+        delta_J1 = (self.J1 - self.Jc1) / STEPS
+        delta_J2 = (self.J2 - self.Jc2) / STEPS
+        delta_J3 = (self.J3 - self.Jc3) / STEPS
+        delta_J4 = (self.J4 - self.Jc4) / STEPS
 
-    delta_J1 = (J1 - Jc1) / STEPS
-    delta_J2 = (J2 - Jc2) / STEPS
-    delta_J3 = (J3 - Jc3) / STEPS
-    delta_J4 = (J4 - Jc4) / STEPS
+        for i in range(STEPS):
+            joint.data[0] = self.Jc1 + delta_J1 * (i + 1)
+            joint.data[1] = self.Jc2 + delta_J2 * (i + 1)
+            joint.data[2] = self.Jc3 + delta_J3 * (i + 1)
+            joint.data[3] = self.Jc4 + delta_J4 * (i + 1)
+            print("---------TRAJECTORY------------")
+            self.publisher.publish(joint)
+            time.sleep(STEP_TIME)
 
-    for i in range(STEPS):
-        joint.data[0] = Jc1 + delta_J1 * (i + 1)
-        joint.data[1] = Jc2 + delta_J2 * (i + 1)
-        joint.data[2] = Jc3 + delta_J3 * (i + 1)
-        joint.data[3] = Jc4 + delta_J4 * (i + 1)
-        print("---------TRAJECTORY------------")
-        
-        Joints.publish(joint)
-        
-        time.sleep(STEP_TIME)
+        self.trajectory_in_progress = False
 
-    Trajectory = 1
-    
+def main(args=None):
+    rclpy.init(args=args)
+    trajectory_publisher = TrajectoryPublisher()
+    rclpy.spin(trajectory_publisher)
+    trajectory_publisher.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
-    rclpy.init(args=sys.argv)
-    global node 
-    node = Node('joint_trajectory_publisher')
-    node.create_subscription(Float64MultiArray, 'trajectory_input', Input_function, 10)
-    node.create_timer(0.2, joint_trajectory_publisher)
-    rclpy.spin(node)
-    
-    rclpy.shutdown()
+    main()

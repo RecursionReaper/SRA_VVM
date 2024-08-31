@@ -8,7 +8,7 @@ import math
 import sys
 
 def direct_angle_publisher():
-    Joints = node.create_publisher(Float64MultiArray, 'trajectory_input',qos_profile=qos.qos_profile_parameter_events)
+    Joints = node.create_publisher(Float64MultiArray, 'trajectory_inputs',qos_profile=qos.qos_profile_parameter_events)
     joint = Float64MultiArray()
     joint.data = [0.0,0.0,0.0,0.0]
 

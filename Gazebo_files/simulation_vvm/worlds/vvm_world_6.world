@@ -222,7 +222,7 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Red</name>
+              <name>Gazebo/Blue</name>
             </script>
           </material>
         </visual>
@@ -230,7 +230,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.288291 0.003501 0 0 -0 0</pose>
+      <pose>0.500 0 0 0 -0 0</pose>
     </model>
     <model name='block_floor'>
       <static>1</static>

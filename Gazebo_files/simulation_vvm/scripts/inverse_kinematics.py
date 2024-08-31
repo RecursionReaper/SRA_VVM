@@ -108,9 +108,7 @@ class InverseKinematicsNode(Node):
         # else:
         #     # joint.data[4] = 0.0
         #     # joint.data[5] = 0.0
-
         self.joints_publisher.publish(joint)
-        
     
 if __name__ == '__main__':
     rclpy.init(args=sys.argv)

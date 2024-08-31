@@ -287,7 +287,7 @@
   </joint>
 
   <joint name="camera_to_camera_frame_joint" type="fixed">
-    <origin xyz="0.045 0.012 0" rpy="0 1.5708 0"/> 
+    <origin xyz="0.045 0.012 0" rpy="0 1.5708 -1.5708"/> 
     <parent link="camera_link"/>
     <child link="camera_frame_link"/>
   </joint>
@@ -350,7 +350,7 @@
 
   <gazebo reference= 'camera_frame_link'>
     <sensor name="Intel_Realsense" type="camera">
-      <pose> 0 0 0 0 0 0 </pose>
+      <pose> 0 0 0 0 0 1.57 </pose>
       <visualize>true</visualize>
       <update_rate>10</update_rate>
       <camera>
