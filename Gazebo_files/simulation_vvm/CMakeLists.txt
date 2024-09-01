@@ -30,6 +30,9 @@ install(PROGRAMS
   scripts/Object_distance.py
   scripts/current_angle.py
   scripts/trajectory.py
+  scripts/trajectory_2.py
+  scripts/trajectory_3.py
+  scripts/inverse_script_seperate.py
   DESTINATION lib/${PROJECT_NAME}
 )
 install(

@@ -20,6 +20,7 @@ class ImageSubscriber(Node):
         self.subscription 
         self.br = CvBridge()
 
+
     def listener_callback(self, msg):
         self.get_logger().info('Receiving image')
 

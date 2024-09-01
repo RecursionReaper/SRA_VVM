@@ -172,7 +172,7 @@
       <link name='link'>
         <pose>0 0 0.025 0 -0 0</pose>
         <inertial>
-          <mass>0.0565</mass>
+          <mass>0.00005</mass>
           <inertia>
             <ixx>2.35417e-05</ixx>
             <ixy>0</ixy>
@@ -230,98 +230,201 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.500 0 0 0 -0 0</pose>
+      <pose>0.288291 0.003501 0 0 -0 0</pose>
     </model>
-    <model name='block_floor'>
-      <static>1</static>
+    <state world_name='default'>
+      <sim_time>772 156000000</sim_time>
+      <real_time>175 832760656</real_time>
+      <wall_time>1725140582 703769221</wall_time>
+      <iterations>174584</iterations>
+      <model name='cafe_table'>
+        <pose>0.521003 0.063927 -0.703116 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.521003 0.063927 -0.703116 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wood_cube_5cm'>
+        <pose>0.366233 -0.013041 0.144875 1.1e-05 -8e-06 -0.003532</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.366232 -0.013042 0.169875 1.1e-05 -8e-06 -0.003532</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -0 0 -0 0</acceleration>
+          <wrench>0 0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wood_cube_7_5cm'>
+        <pose>0.37427 -0.002137 0.070877 1.1e-05 -8e-06 -0.001696</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.37427 -0.002137 0.108377 1.1e-05 -8e-06 -0.001696</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0 0 0 -0 -0 -0</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wood_cube_7_5cm_clone'>
+        <pose>0.019001 0.264191 -0.001005 0 0 -0.001696</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.019001 0.264191 0.036495 0 0 -0.001696</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0 -0 -0 0 -0 0</acceleration>
+          <wrench>-0 -0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-0.195599 -1.60128 0.732633 0 0.243641 1.24421</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='wood_cube_7_5cm'>
       <link name='link'>
+        <pose>0 0 0.0375 0 -0 0</pose>
+        <inertial>
+          <mass>0.2249</mass>
+          <inertia>
+            <ixx>0.000210844</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.000210844</iyy>
+            <iyz>0</iyz>
+            <izz>0.000210844</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
         <collision name='collision'>
           <geometry>
             <box>
-              <size>5 5 0.1</size>
+              <size>0.075 0.075 0.075</size>
             </box>
           </geometry>
           <surface>
             <contact>
-              <ode/>
+              <poissons_ratio>0.347</poissons_ratio>
+              <elastic_modulus>8.8e+09</elastic_modulus>
+              <ode>
+                <kp>100000</kp>
+                <kd>100</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
             </contact>
-            <bounce/>
             <friction>
               <torsional>
+                <coefficient>1</coefficient>
+                <use_patch_radius>0</use_patch_radius>
+                <surface_radius>0.01</surface_radius>
                 <ode/>
               </torsional>
               <ode/>
             </friction>
+            <bounce/>
           </surface>
           <max_contacts>10</max_contacts>
         </collision>
         <visual name='visual'>
           <geometry>
             <box>
-              <size>5 5 0.1</size>
+              <size>0.075 0.075 0.075</size>
             </box>
-            <material>
-              <script>
-                <uri>file://media/materials/scripts/gazebo.material</uri>
-                <name>Gazebo/Grey</name>
-              </script>
-            </material>
           </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0 0 0 0 0 0</pose>
+      <pose>0.257979 1.01184 0 0 -0 0</pose>
     </model>
-    <model name="coke_can">
-      <static>0</static>
-      <link name="link">
+    <model name='wood_cube_7_5cm_clone'>
+      <link name='link'>
+        <pose>0 0 0.0375 0 -0 0</pose>
         <inertial>
-          <mass>0.1</mass>
+          <mass>0.2249</mass>
           <inertia>
-            <ixx>0.000108</ixx>
+            <ixx>0.000210844</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.000109</iyy>
+            <iyy>0.000210844</iyy>
             <iyz>0</iyz>
-            <izz>6.6e-06</izz>
+            <izz>0.000210844</izz>
           </inertia>
-          <pose>0 0 0 0 0 0</pose>
+          <pose>0 0 0 0 -0 0</pose>
         </inertial>
-        <collision name="collision">
+        <collision name='collision'>
           <geometry>
-            <cylinder>
-              <radius>0.035</radius>
-              <length>0.15</length>
-            </cylinder>
+            <box>
+              <size>0.075 0.075 0.075</size>
+            </box>
           </geometry>
           <surface>
+            <contact>
+              <poissons_ratio>0.347</poissons_ratio>
+              <elastic_modulus>8.8e+09</elastic_modulus>
+              <ode>
+                <kp>100000</kp>
+                <kd>100</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
             <friction>
               <torsional>
+                <coefficient>1</coefficient>
+                <use_patch_radius>0</use_patch_radius>
+                <surface_radius>0.01</surface_radius>
                 <ode/>
               </torsional>
               <ode/>
             </friction>
-            <contact>
-              <ode/>
-            </contact>
             <bounce/>
           </surface>
           <max_contacts>10</max_contacts>
         </collision>
-        <visual name="visual">
+        <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://coke_can/meshes/coke_can.dae</uri>
-            </mesh>
+            <box>
+              <size>0.075 0.075 0.075</size>
+            </box>
           </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.244752 0.26416 0.103001 2e-06 0 1.3074e-06</pose>
+      <pose>0.184537 0.195259 0.070877 4e-06 -4e-06 -0.001696</pose>
     </model>
   </world>
 </sdf>

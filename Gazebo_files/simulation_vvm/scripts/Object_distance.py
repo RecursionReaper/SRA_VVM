@@ -51,9 +51,9 @@ class InverseKinematicsNode(Node):
             self.obj_position = msg.data
 
             print("Received object position:-----------")
-            print("ObjDistance_X - ", self.obj_position[0])
-            print("ObjDistance_Y - ", self.obj_position[1])
-            print("ObjDistance_Z - ", self.obj_position[2])
+            print("ObjDistance_X - ", self.obj_position[2]/100)
+            print("ObjDistance_Y - ", self.obj_position[0]/100)
+            print("ObjDistance_Z - ", -self.obj_position[1]/100)
 
             self.calculate_and_publish()
 
@@ -64,9 +64,9 @@ class InverseKinematicsNode(Node):
             theta2 = -(self.angles[1])
             theta3 = -(self.angles[2])
             theta4 = -(self.angles[3])
-            ObjDistance_X = self.obj_position[0]
-            ObjDistance_Y = self.obj_position[1]
-            ObjDistance_Z = self.obj_position[2]
+            ObjDistance_X = self.obj_position[2]/100
+            ObjDistance_Y = self.obj_position[0]/100
+            ObjDistance_Z = self.obj_position[1]/100
 
             H1 = np.array([[math.cos(theta1), 0, math.sin(theta1), 0],
                            [math.sin(theta1), 0, -math.cos(theta1), 0],
@@ -92,21 +92,28 @@ class InverseKinematicsNode(Node):
                            [math.sin(theta4), 0, math.cos(theta4), 0.126 * math.sin(theta4)],
                            [0, -1, 0, 0],
                            [0, 0, 0, 1]])
+            
 
-            HCam = np.array([[0, 0, 0, ObjDistance_X],
+            HCam = np.array([[0, 0, 0, -0.046],
+                             [0, 0, 0, 0],
+                             [0, 0, 0, 0.055],
+                             [0, 0, 0, 1]])
+            
+            HObj = np.array([[0, 0, 0, ObjDistance_X],
                              [0, 0, 0, ObjDistance_Y],
                              [0, 0, 0, ObjDistance_Z],
-                             [0, 0, 0, 1]])
+                             [0, 0, 0, 1]])           
 
             H12 = np.dot(H1, H2)
             H12T = np.dot(H12, H2T)
             H123 = np.dot(H12T, H3)
             H1234 = np.dot(H123, H4)
             H1234Cam = np.dot(H1234, HCam)
+            H1234CamObj = np.dot(H1234Cam, HObj)
 
-            EEX = H1234Cam[0, 3]
-            EEY = H1234Cam[1, 3]
-            EEZ = H1234Cam[2, 3]
+            EEX = H1234CamObj[0, 3]
+            EEY = H1234CamObj[1, 3]
+            EEZ = H1234CamObj[2, 3]
 
             print("Calculated end-effector position:----")
             print("EEX - ", EEX)
