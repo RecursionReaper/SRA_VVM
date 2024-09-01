@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/humble/include/**",
+        "/home/kartikey/Backup_ROS/MARIO/firmware/components/sra-board-component/include/**",
+        "/home/kartikey/Backup_ROS/open_manipulator-master(2)/open_manipulator-master/open_manipulator_control_gui/include/**",
+        "/home/kartikey/Backup_ROS/open_manipulator-master(2)/open_manipulator-master/open_manipulator_controller/include/**",
+        "/home/kartikey/Backup_ROS/open_manipulator-master(2)/open_manipulator-master/open_manipulator_libs/include/**",
+        "/home/kartikey/Backup_ROS/open_manipulator-master(2)/open_manipulator-master/open_manipulator_teleop/include/**",
+        "/home/kartikey/Backup_ROS/urdf_humble_test/include/**",
+        "/home/kartikey/Downloads/open_manipulator-master/open_manipulator_control_gui/include/**",
+        "/home/kartikey/Downloads/open_manipulator-master/open_manipulator_controller/include/**",
+        "/home/kartikey/Downloads/open_manipulator-master/open_manipulator_libs/include/**",
+        "/home/kartikey/Downloads/open_manipulator-master/open_manipulator_teleop/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
