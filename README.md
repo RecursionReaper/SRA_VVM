@@ -54,7 +54,7 @@ We will be designing and developing the Intelligent Video Manipulator with Voice
 ## Contributors
 
  -  [Kartikey Pathak](https://github.com/NoobMaster-version)
-- [Aniket Desai](https://github.com/MASQUERADE-2005) 
+- [Aniket Desai](https://github.com/RecursionReaper) 
 - [Yash Suthar](https://github.com/BlazinBull)
 
 ## Resources
